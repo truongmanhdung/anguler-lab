@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Helldsadsadsasa</h3>
+    <img width="200" [src]="Image[imgIndex]" alt="">
+    <h3>{{textInput}}</h3>
+    <input type="text" [(ngModel)]="textInput">
+
+    <img src="https://cf.shopee.vn/file/67152bbd92be481d44c5369b039d197b" *ngiff='hidden' />
+    <p>-------------------------------------</p>
+    <p>{{profileForm.value.firstName}}</p>
+    <p>{{profileForm.value.lastName}}</p>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+        <label for="first-name">First Name: </label>
+        <input id="first-name" type="text" formControlName="firstName">
+      
+        <label for="last-name">Last Name: </label>
+        <input id="last-name" type="text" formControlName="lastName">
+        <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+    </form>
+</body>
+</html>

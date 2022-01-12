@@ -1,0 +1,51 @@
+<div class="container">
+  <h3 class="bg-light py-3 ps-3">Product list</h3>
+  <div class="mb-3 d-flex align-items-center">
+    <label for="exampleInputEmail1" class="form-label me-3 font-weight fs-1"
+      >Filter</label
+    >
+    <input
+      (keyup)="filterProduct($event)"
+      style="width: 300px"
+      placeholder="Nhập keywords"
+      type="search"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+    />
+  </div>
+  <img
+    class="d-block mx-auto"
+    *ngIf="products.length == 0 && !loading"
+    src="https://onlineraj.com/images/no-products-found.png"
+    alt=""
+  />
+  <img
+    class="d-block mx-auto"
+    src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif"
+    *ngIf="loading"
+    alt=""
+  />
+  <table class="table table-hover" *ngIf="products && products.length > 0 && !loading">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Product</th>
+        <th scope="col">Code</th>
+        <th scope="col">Available</th>
+        <th scope="col">Price</th>
+        <th class="text-center" scope="col">5 Star Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td><img width="50" [src]="product.imageUrl" alt="" /></td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.productCode }}</td>
+        <td>{{ product.releaseDate }}</td>
+        <td>{{ product.price }}</td>
+        <td class="text-center">{{ product.starRating }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
