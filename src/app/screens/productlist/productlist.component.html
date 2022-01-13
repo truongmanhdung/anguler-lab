@@ -1,11 +1,11 @@
 <div class="container">
   <h3 class="bg-light py-3 ps-3">Product list</h3>
   <div class="mb-3 d-flex align-items-center">
-    <label for="exampleInputEmail1" class="form-label me-3 font-weight fs-1"
+    <label for="exampleInputEmail1" class="form-label me-3 font-weight "
       >Filter</label
     >
     <input
-      (keyup)="filterProduct($event)"
+      [(ngModel)]="searchText"
       style="width: 300px"
       placeholder="Nhập keywords"
       type="search"
@@ -14,6 +14,7 @@
       aria-describedby="emailHelp"
     />
   </div>
+  <h3 class="fs-1">Filter By: {{searchText}}</h3>
   <img
     class="d-block mx-auto"
     *ngIf="products.length == 0 && !loading"
@@ -26,7 +27,10 @@
     *ngIf="loading"
     alt=""
   />
-  <table class="table table-hover" *ngIf="products && products.length > 0 && !loading">
+  <table
+    class="table table-hover"
+    *ngIf="products && products.length > 0 && !loading"
+  >
     <thead>
       <tr>
         <th scope="col">Image</th>
@@ -38,13 +42,28 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
-        <td><img width="50" [src]="product.imageUrl" alt="" /></td>
+      <tr *ngFor="let product of products | filter:searchText">
+        <td (click)="hideImage(product.imageUrl)"><img *ngIf="!product.check"  width="50" [src]="product.imageUrl" alt="" /></td>
         <td>{{ product.productName }}</td>
         <td>{{ product.productCode }}</td>
         <td>{{ product.releaseDate }}</td>
         <td>{{ product.price }}</td>
-        <td class="text-center">{{ product.starRating }}</td>
+        <td class="text-center">
+          <div
+            class="text-center mx-auto"
+            [style.width.px]="(product.starRating * 90) / 5"
+            title="rating"
+            style="overflow: hidden;"
+          > 
+            <div style="width: 90px">
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -10,6 +10,7 @@ import { ProductlistComponent } from './screens/productlist/productlist.componen
 import { ProductDetailComponent } from './screens/product-detail/product-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { HeaderComponent } from './components/header/header.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

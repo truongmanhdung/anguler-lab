@@ -21,6 +21,7 @@ export class ProductlistComponent implements OnInit {
       starRating: 3.2,
       imageUrl:
         'http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png',
+      check: false,
     },
     {
       productId: 5,
@@ -32,6 +33,7 @@ export class ProductlistComponent implements OnInit {
       starRating: 4.8,
       imageUrl:
         'http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png',
+      check: false,
     },
     {
       productId: 8,
@@ -43,6 +45,7 @@ export class ProductlistComponent implements OnInit {
       starRating: 3.7,
       imageUrl:
         'http://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png',
+      check: false,
     },
     {
       productId: 10,
@@ -54,18 +57,16 @@ export class ProductlistComponent implements OnInit {
       starRating: 4.6,
       imageUrl:
         'http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png',
+      check: false,
     },
   ];
   loading = false;
-  filterProduct(e: any) {
-    let that = this;
-    that.loading = true;
-    setTimeout(() => {
-      this.products = this.productList.filter((product: IProduct) =>
-        product.productName.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      that.loading = false;
-    }, 1000);
+  searchText = '';
+  hideImage(image: String) {
+    let productHide = this.productList.find((product: IProduct) => product.imageUrl === image);
+    if(productHide){
+      productHide.check = !productHide.check;
+    }
   }
   ngOnInit(): void {
     let that = this;
