@@ -5,7 +5,7 @@
       >Filter</label
     >
     <input
-      [(ngModel)]="searchText"
+      (keyup)="filter($event)"
       style="width: 300px"
       placeholder="Nhập keywords"
       type="search"
@@ -42,8 +42,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products | filter:searchText">
-        <td (click)="hideImage(product.imageUrl)"><img *ngIf="!product.check"  width="50" [src]="product.imageUrl" alt="" /></td>
+      <tr *ngFor="let product of products">
+        <td (click)="hideImage(product.imageUrl)">
+          <img *ngIf="!product.check"  width="50" [src]="product.imageUrl" alt="" />
+          <button *ngIf="product.check" type="button" class="btn btn-outline-primary">Hiện ảnh</button>
+        </td>
         <td>{{ product.productName }}</td>
         <td>{{ product.productCode }}</td>
         <td>{{ product.releaseDate }}</td>
@@ -56,11 +59,11 @@
             style="overflow: hidden;"
           > 
             <div style="width: 90px">
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
+              <span style="color: yellow" class="fa fa-star"></span>
+              <span style="color: yellow" class="fa fa-star"></span>
+              <span style="color: yellow" class="fa fa-star"></span>
+              <span style="color: yellow" class="fa fa-star"></span>
+              <span style="color: yellow" class="fa fa-star"></span>
             </div>
           </div>
         </td>
