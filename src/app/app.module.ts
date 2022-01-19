@@ -9,8 +9,10 @@ import { WelcomeComponent } from './screens/welcome/welcome.component';
 import { ProductlistComponent } from './screens/productlist/productlist.component';
 import { ProductDetailComponent } from './screens/product-detail/product-detail.component';
 import { HeaderComponent } from './components/header/header.component';
-
+import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AgePipe } from './pipes/age.pipe';
+import { StarComponent } from './components/star/star.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ProductlistComponent,
     ProductDetailComponent,
     HeaderComponent,
+    AgePipe,
+    StarComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,9 +29,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    AngularToastifyModule,
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

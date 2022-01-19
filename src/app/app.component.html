@@ -8,8 +8,11 @@
   </head>
   <body>
     <div class="container-fluid m-0 p-0">
+      <lib-toastify-toast-container [iconLibrary]="'font-awesome'">
+      </lib-toastify-toast-container>
       <app-header></app-header>
-      <app-productlist></app-productlist>
+      <!-- <app-productlist></app-productlist> -->
+      <router-outlet></router-outlet>
     </div>
   </body>
 </html>
